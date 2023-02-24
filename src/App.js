@@ -1,16 +1,15 @@
-import React from "react";
-import AppHeader from "./components/featured/AppHeader";
+import React, { useReducer } from "react";
+import { AppContext, initialAppState } from "./contexts/app/context";
+import { appReducer } from "./contexts/app/reducer";
 import Router from "./Router";
 
-/**
- * Defines the root application component.
- * @returns {JSX.Element}
- */
 function App() {
+  const [state, dispatch] = useReducer(appReducer, initialAppState)
   return (
     <>
-      <AppHeader />
-      <Router />
+      <AppContext.Provider value={{ state, dispatch }}>
+        <Router />
+      </AppContext.Provider>
     </>
   );
 }

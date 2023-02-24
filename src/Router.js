@@ -1,27 +1,32 @@
-import React from "react";
+import React, {useContext} from "react";
 
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { AppContext } from "./contexts/app/context";
 import ContentProducer from "./pages/contentProducer/ContentProducer";
 import Dashboard from "./pages/dashboard/Dashboard";
+import SignIn from "./pages/signIn/SignIn";
+import SignUp from "./pages/signUp/SignUp";
 
-// TODO: create a loggedin flow and logged out flow
-// logged in flow shows the content producer section and the dashboard
-// logged out flow only show the dashboard
-// store logged in and logged out in state or in a context
-
-/**
- * Defines all the routes for the application.
- *
- * You will need to make changes to this file.
- *
- * @returns {JSX.Element}
- */
 function Router() {
+  const {
+    state: { isLoggedIn }
+  } = useContext(AppContext);
+
+  // Todo: put the sign in and sign out pages here
+  const loggedOutRoutes = (
+    <>
+      <Route path="/sign-up" element={<SignUp />} />
+      <Route path="/sign-in" element={<SignIn />} />
+    </>
+  );
+
+  const loggedInRoutes = <Route path="/content-producer" element={<ContentProducer />} />;
+
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
-        <Route path="/content-producer" element={<ContentProducer />} />
+        { isLoggedIn ? loggedInRoutes : loggedOutRoutes }
       </Routes>
     </BrowserRouter>
   );
