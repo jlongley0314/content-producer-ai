@@ -1,9 +1,16 @@
 // This component was pulled from the Sitekick export (that is why it is not using MUI)
 
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 import "./sitekick-export.css";
 
 function Dashboard() {
+  const navigate = useNavigate()
+  function handleSignUpClick() {
+    navigate("/sign-up");
+  }
+
   return (
     <>
     <div data-collapse="medium" data-animation="default" data-duration="400" data-w-id="61bca4c7-d999-94f6-67cf-599da6f07b79" data-easing="ease" data-easing2="ease" role="banner" class="nav-bar w-nav">
@@ -23,7 +30,7 @@ function Dashboard() {
           </nav>
           <div class="nav-right">
             <div class="w-layout-grid nav-buttons">
-              <a href="#Intro" class="button small white w-button">Sign up</a>
+              <Button disableRipple onClick={handleSignUpClick} class="button small white w-button">Sign up</Button>
             </div>
           </div>
           <div class="menu-button w-clearfix w-nav-button">
