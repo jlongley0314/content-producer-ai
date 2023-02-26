@@ -1,5 +1,7 @@
+import SignUpSignInForm from "../../components/shared/SignUpSignInForm";
+
 function SignIn() {
-    return <>Sign In</>
+  return <SignUpSignInForm />;
 }
 
-export default SignIn
+export default SignIn;
