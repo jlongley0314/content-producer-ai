@@ -1,4 +1,4 @@
-import { Alert, Box, Button, Link, TextField, Typography } from "@mui/material";
+import { Box, Button, Link, TextField, Typography } from "@mui/material";
 import { useContext } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -92,7 +92,7 @@ function SignUpSignInForm({ signUp }) {
                 )}
               />
               <Controller
-                name="lasttName"
+                name="lastName"
                 control={control}
                 rules={{
                   required: true,
@@ -111,7 +111,7 @@ function SignUpSignInForm({ signUp }) {
             </>
           )}
           <Controller
-            name="emailAddress"
+            name="username"
             control={control}
             rules={{
               required: true,
@@ -150,7 +150,7 @@ function SignUpSignInForm({ signUp }) {
             type="submit"
             variant="contained"
           >
-            Sign Up
+            {signUp ? "Sign Up" : "Sign In"}
           </Button>
           {signUp && (
             <Box
