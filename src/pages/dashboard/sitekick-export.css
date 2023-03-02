@@ -7823,6 +7823,7 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    flex-direction: row;
     -webkit-box-pack: end;
     -webkit-justify-content: flex-end;
     -ms-flex-pack: end;

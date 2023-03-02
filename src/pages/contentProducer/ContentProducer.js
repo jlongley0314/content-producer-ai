@@ -4,6 +4,7 @@ import Controls from "../../components/shared/muiControls/Controls";
 import * as appData from "../../constants/appData";
 import { COLORS } from "../../constants";
 import { OpenAIApi, Configuration } from "openai";
+import AppHeader from "../../components/featured/AppHeader";
 
 function ContentProducer() {
   const [selectedContextType, setSelectedContextType] = useState("");
@@ -45,83 +46,86 @@ function ContentProducer() {
   };
 
   return (
-    <Paper
-      elevation={8}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        flex: 1,
-        marginRight: "40px",
-        marginLeft: "40px",
-        marginTop: "20px",
-        height: "1000px",
-      }}
-    >
-      <div style={{ marginTop: "30px" }}>
-        <Controls.Select
-          variant="outlined"
-          name="contentType"
-          label="Content Type"
-          value={selectedContextType}
-          onChange={onSelectContextType}
-          size="small"
-          options={appData.getContextTypes()}
-          style={{
-            width: "800px",
-            margin: "10px",
-            backgroundColor: COLORS.white,
-          }}
-        />
-      </div>
-      <div>
-        <Controls.Input
-          variant="outlined"
-          name="contentCriteria"
-          label="Enter Content Criteria"
-          value={contextCriteria}
-          onChange={onSelectContextCriteria}
-          size="small"
-          multiline
-          disabled={false}
-          rows={5}
-          style={{
-            width: "800px",
-            margin: "10px",
-            backgroundColor: COLORS.white,
-          }}
-        />
-      </div>
-      <div>
-        <Controls.Button
-          variant="contained"
-          color="primary"
-          size="large"
-          text="GENERATE ANSWER"
-          type="button"
-          onClick={() => handleSubmitBtn()}
-          style={{ width: "800px", margin: "10px" }}
-        />
-      </div>
-      <div>
-        <Controls.Input
-          variant="outlined"
-          name="searchResults"
-          label="Results appear here"
-          value={returnedResults}
-          //onChange={onSelectContextCriteria}
-          size="small"
-          multiline
-          disabled={true}
-          rows={10}
-          style={{
-            width: "800px",
-            margin: "10px",
-            backgroundColor: COLORS.white,
-          }}
-        />
-      </div>
-    </Paper>
+    <>
+      <AppHeader />
+      <Paper
+        elevation={8}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          flex: 1,
+          marginRight: "40px",
+          marginLeft: "40px",
+          marginTop: "20px",
+          height: "1000px",
+        }}
+      >
+        <div style={{ marginTop: "30px" }}>
+          <Controls.Select
+            variant="outlined"
+            name="contentType"
+            label="Content Type"
+            value={selectedContextType}
+            onChange={onSelectContextType}
+            size="small"
+            options={appData.getContextTypes()}
+            style={{
+              width: "800px",
+              margin: "10px",
+              backgroundColor: COLORS.white,
+            }}
+          />
+        </div>
+        <div>
+          <Controls.Input
+            variant="outlined"
+            name="contentCriteria"
+            label="Enter Content Criteria"
+            value={contextCriteria}
+            onChange={onSelectContextCriteria}
+            size="small"
+            multiline
+            disabled={false}
+            rows={5}
+            style={{
+              width: "800px",
+              margin: "10px",
+              backgroundColor: COLORS.white,
+            }}
+          />
+        </div>
+        <div>
+          <Controls.Button
+            variant="contained"
+            color="primary"
+            size="large"
+            text="GENERATE ANSWER"
+            type="button"
+            onClick={() => handleSubmitBtn()}
+            style={{ width: "800px", margin: "10px" }}
+          />
+        </div>
+        <div>
+          <Controls.Input
+            variant="outlined"
+            name="searchResults"
+            label="Results appear here"
+            value={returnedResults}
+            //onChange={onSelectContextCriteria}
+            size="small"
+            multiline
+            disabled={true}
+            rows={10}
+            style={{
+              width: "800px",
+              margin: "10px",
+              backgroundColor: COLORS.white,
+            }}
+          />
+        </div>
+      </Paper>
+    </>
   );
 }
 

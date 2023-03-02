@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, MouseEvent } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,12 +12,17 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { images } from "../../constants";
 
-const pages = ["Intro", "Features", "Testimonials"];
-// const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import { useStyles } from "../../assets/styles/mainStyles";
+import { images } from "../../constants";
+import "./Header.css";
+
+const pages = ["Products", "Pricing", "Blog"];
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function AppHeader() {
+  const classes = useStyles();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -35,90 +40,48 @@ function AppHeader() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+      <Toolbar disableGutters>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-evenly",
+            width: "100%",
+          }}
+        >
+          <div style={{ marginLeft: "30px" }}>
+            <img
+              src={images.logo}
+              alt="logo"
+              className="appBarLogo"
+              style={{ width: "60px", height: "60px", marginRight: "20px" }}
+            />
+          </div>
+          <div>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
               sx={{
-                display: { xs: "block", md: "none" },
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                // fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography variant="h4" component="div" textAlign="center">
-                    {page}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          {/* <img
-            src={images.logo}
-            alt="logo"
-            className="appBarLogo"
-            style={{ width: "60px", height: "60px", marginRight: "20px" }}
-          /> */}
-          <Typography fontWeight="bold" variant="h6" marginRight="50px">
-            Content Producer.Ai
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-                href={page}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
+              Content Producer.AI
+            </Typography>
+          </div>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Button
-              // TODO: Implement the click handler to show the auth form
-              // onClick={}
-              size="large"
-              color="primary"
-              variant="contained"
-              style={{
-                backgroundColor: "white",
-                color: "black",
-                borderRadius: 25,
-                fontWeight: "bold",
-              }}
-            >
-              Sign Up
-            </Button>
-            {/* This is the user avatar tooltip, uncomment if using later */}
-            {/* <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+          <div style={{ marginRight: "30px" }}>
+            <Tooltip title="Open settings">
+              <IconButton sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
@@ -136,18 +99,19 @@ function AppHeader() {
                 horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              // onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu> */}
-          </Box>
-        </Toolbar>
-      </Container>
+            </Menu>
+          </div>
+        </div>
+      </Toolbar>
     </AppBar>
   );
 }
+
 export default AppHeader;

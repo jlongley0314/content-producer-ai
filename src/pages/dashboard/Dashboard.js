@@ -6,43 +6,83 @@ import "./index.css";
 import "./sitekick-export.css";
 
 function Dashboard() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   function handleSignUpClick() {
     navigate("/sign-up");
+  }
+  function handleSignInClick() {
+    navigate("/sign-in");
   }
 
   return (
     <>
-    <div data-collapse="medium" data-animation="default" data-duration="400" data-w-id="61bca4c7-d999-94f6-67cf-599da6f07b79" data-easing="ease" data-easing2="ease" role="banner" class="nav-bar w-nav">
-      <div class="wrapper nav-bar-wrapper">
-        <a href="index.html" aria-current="page" class="brand w-nav-brand w--current">
-          <img src="images/logo-circle.svg" alt="" class="logo-icon" />
-          <div class="logo-text">
-            <strong>Content Producer.AI</strong>
-            <br />
-          </div>
-        </a>
-        <div class="navigation">
-          <nav role="navigation" class="nav-menu w-nav-menu">
-            <a href="#Intro" class="nav-link w-nav-link">Intro</a>
-            <a href="#Features" class="nav-link w-nav-link">Features</a>
-            <a href="#testimonials" class="nav-link w-nav-link">Testimonials</a>
-          </nav>
-          <div class="nav-right">
-            <div class="w-layout-grid nav-buttons">
-              <Button disableRipple onClick={handleSignUpClick} class="button small white w-button">Sign up</Button>
+      <div
+        data-collapse="medium"
+        data-animation="default"
+        data-duration="400"
+        data-w-id="61bca4c7-d999-94f6-67cf-599da6f07b79"
+        data-easing="ease"
+        data-easing2="ease"
+        role="banner"
+        class="nav-bar w-nav"
+      >
+        <div class="wrapper nav-bar-wrapper">
+          <a
+            href="index.html"
+            aria-current="page"
+            class="brand w-nav-brand w--current"
+          >
+            <img src="images/logo-circle.svg" alt="" class="logo-icon" />
+            <div class="logo-text">
+              <strong>Content Producer.AI</strong>
+              <br />
             </div>
-          </div>
-          <div class="menu-button w-clearfix w-nav-button">
-            <div class="menu-icon">
-              <div class="menu-icon-line-top"></div>
-              <div class="menu-icon-line-middle"></div>
-              <div class="menu-icon-line-bottom"></div>
+          </a>
+          <div class="navigation">
+            <nav role="navigation" class="nav-menu w-nav-menu">
+              <a href="#Intro" class="nav-link w-nav-link">
+                Intro
+              </a>
+              <a href="#Features" class="nav-link w-nav-link">
+                Features
+              </a>
+              <a href="#testimonials" class="nav-link w-nav-link">
+                Testimonials
+              </a>
+            </nav>
+            <div class="nav-right">
+              <div
+                class="w-layout-grid nav-buttons"
+                style={{ marginRight: 10 }}
+              >
+                <Button
+                  disableRipple
+                  onClick={handleSignUpClick}
+                  class="button small white w-button"
+                >
+                  Sign Up
+                </Button>
+              </div>
+              <div class="w-layout-grid nav-buttons">
+                <Button
+                  disableRipple
+                  onClick={handleSignInClick}
+                  class="button small white w-button"
+                >
+                  Sign In
+                </Button>
+              </div>
+            </div>
+            <div class="menu-button w-clearfix w-nav-button">
+              <div class="menu-icon">
+                <div class="menu-icon-line-top"></div>
+                <div class="menu-icon-line-middle"></div>
+                <div class="menu-icon-line-bottom"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
       <div id="Intro" className="section hero-section wf-section">
         <div className="wrapper">
           <div className="hero">
